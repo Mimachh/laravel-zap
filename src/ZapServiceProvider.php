@@ -39,7 +39,7 @@ class ZapServiceProvider extends ServiceProvider
 
             $this->publishesMigrations([
                 __DIR__.'/../database/migrations' => database_path('migrations'),
-            ]);
+            ], 'zap-migrations');
         }
     }
 
