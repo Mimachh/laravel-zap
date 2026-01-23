@@ -501,6 +501,7 @@ trait HasSchedules
         $checkDate = \Carbon\Carbon::parse($date);
 
         // Get all availability schedules for this date
+        /** @var \Illuminate\Database\Eloquent\Collection<int, \Zap\Models\Schedule> $availabilitySchedules */
         $availabilitySchedules = $this->getScheduleClass()::where('schedulable_type', $this->getMorphClass())
             ->where('schedulable_id', $this->getKey())
             ->availability()
@@ -511,7 +512,7 @@ trait HasSchedules
 
         $allPeriods = collect();
 
-        $availabilitySchedules->each(function ($schedule) use ($date, $checkDate, &$allPeriods) {
+        $availabilitySchedules->each(function (\Zap\Models\Schedule $schedule) use ($date, $checkDate, &$allPeriods) {
             if (! $schedule->isActiveOn($date)) {
                 return;
             }
