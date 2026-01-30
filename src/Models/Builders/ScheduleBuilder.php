@@ -71,12 +71,20 @@ class ScheduleBuilder extends Builder
             })
 
             // recurrence logic
-            ->where(function ($q) use ($weekday, $dayOfMonth, $isDateInEvenIsoWeek) {
+            ->where(function ($q) use ($checkDate, $weekday, $dayOfMonth, $isDateInEvenIsoWeek) {
 
                 //
-                // 1️⃣ NOT RECURRING — always match
+                // 1️⃣ NOT RECURRING — match exact start_date if no end_date, or any date in range if end_date is set
                 //
-                $q->where('is_recurring', false)
+                $q->where(function ($nonRecurring) use ($checkDate) {
+                    $nonRecurring->where('is_recurring', false)
+                        ->where(function ($dateLogic) use ($checkDate) {
+                            // If end_date is set, any date in the range is valid (handled by outer where clauses)
+                            $dateLogic->whereNotNull('end_date')
+                                // If end_date is NULL, treat as single-day event - only match exact start_date
+                                ->orWhereDate('start_date', $checkDate);
+                        });
+                })
 
                     //
                     // 2️⃣ DAILY — match all days
