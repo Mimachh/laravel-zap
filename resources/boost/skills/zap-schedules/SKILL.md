@@ -27,11 +27,11 @@ class Doctor extends Model
 
 Zap uses four schedule types:
 
-| Type | Purpose | Overlap Behavior |
+| Type | Purpose | Overlap behavior |
 |------|---------|------------------|
 | **Availability** | Define when resources can be booked | Allows overlaps |
-| **Appointment** | Actual bookings or scheduled events | Prevents overlaps |
-| **Blocked** | Periods where booking is forbidden | Prevents overlaps |
+| **Appointment** | Actual bookings or scheduled events | Exclusive — no overlaps allowed |
+| **Blocked** | Periods where booking is forbidden | Exclusive — no overlaps allowed |
 | **Custom** | Neutral schedules with explicit rules | You define the rules |
 
 ## Creating Schedules

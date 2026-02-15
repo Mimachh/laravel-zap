@@ -70,12 +70,12 @@ class Doctor extends Model
 
 ## 🧩 Core concepts
 
-| Type            | Purpose                          | Overlaps      |
-|-----------------|----------------------------------|---------------|
-| **Availability** | When a resource can be booked    | Allowed       |
-| **Appointment**  | Bookings / scheduled events      | Prevented     |
-| **Blocked**      | When booking is forbidden        | Prevented     |
-| **Custom**       | Your rules (overlap, etc.)       | You define    |
+| Type            | Purpose                          | Overlaps        |
+|-----------------|----------------------------------|-----------------|
+| **Availability** | When a resource can be booked    | Allowed         |
+| **Appointment**  | Bookings / scheduled events      | Exclusive       |
+| **Blocked**      | When booking is forbidden        | Exclusive       |
+| **Custom**       | Your rules (overlap, etc.)       | You define      |
 
 ---
 
