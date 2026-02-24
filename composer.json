@@ -1,16 +1,10 @@
 {
-    "name": "laraveljutsu/zap",
+    "name": "mimachh/zap",
     "description": "A flexible, performant, and developer-friendly schedule management system for Laravel",
     "type": "library",
     "keywords": ["laravel", "schedule", "management", "calendar", "booking"],
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Laravel Jutsu",
-            "email": "ludo@epekta.com",
-            "homepage": "https://laraveljutsu.net"
-        }
-    ],
+    "version": "0.1.0",
     "require": {
       "php": ">=8.2 <8.6",
       "ext-intl": "*"
